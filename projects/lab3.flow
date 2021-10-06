@@ -1,0 +1,47 @@
+import string;
+
+fibNumber(n: int)->int{
+    if (n <= 0){ 
+        0;
+    }
+    else if (n == 1){
+        1;
+    }
+    else {
+        fibNumber(n-1) + fibNumber(n-2);
+    }
+}
+
+fibNumberTail(n: int, first: int, second: int)->int{
+    if(n < 3){
+        second;
+    }else{
+        fibNumberTail(n-1, second, first+second);
+    }  
+}
+
+takeFibStart(n:int)->[int]{
+    if(n == 0){
+        [0];
+    }else if (n == 1){
+        [0,1];
+    }else{
+        fibNumberRef(n,[0,1])
+    }
+}
+
+fibNumberRef(n:int, arr: ref[int])->[int]{
+    if(n < 3){
+        arr
+    }else{
+        refArrayPush(arr, ^arr[n-2], ^arr[n-1])
+    }
+
+}
+
+main() {
+    println(fibNumber(10));
+    println(fibNumberTail(10,1,1));
+    println(takeFibStart(10));
+    quit(0);
+}
