@@ -45,135 +45,135 @@
 1416 strGlue$1
 1487 strGlue
 1513 strGlue$init
-1518 i2smap$init
-1534 i2smap
-1564 i2smap$init
-1569 main$init
-1583 main
-1678 main$init
+1518 makeStringArray$init
+1543 makeStringArray
+1573 makeStringArray$init
+1578 main$init
+1592 main
+1687 main$init
 
-0 C:\Users\imami\Programming\flow9\lib\ds\tuples.flow 7 1
-39 C:\Users\imami\Programming\flow9\lib\ds\tuples.flow 3 1
-77 C:\Users\imami\Programming\flow9\lib\ds\tuples.flow 5 1
-141 C:\Users\imami\Programming\flow9\lib\ds\tuples.flow 4 1
-191 C:\Users\imami\Programming\flow9\lib\dynamic.flow 10 2
-217 C:\Users\imami\Programming\flow9\lib\maybe.flow 9 1
-234 C:\Users\imami\Programming\flow9\lib\maybe.flow 10 1
-261 C:\Users\imami\Programming\flow9\lib\ds\list.flow 11 2
-296 C:\Users\imami\Programming\flow9\lib\ds\list.flow 9 2
-318 C:\Users\imami\Programming\flow9\lib\securitymode.flow 5 2
-346 C:\Users\imami\Programming\flow9\lib\securitymode.flow 7 2
-379 C:\Users\imami\Programming\flow9\lib\dynamic.flow 5 1
-432 C:\Users\imami\Programming\flow9\lib\dynamic.flow 36 0
-446 C:\Users\imami\Programming\flow9\lib\dynamic.flow 37 1
-455 C:\Users\imami\Programming\flow9\lib\dynamic.flow 37 6
-460 C:\Users\imami\Programming\flow9\lib\dynamic.flow 38 0
-491 C:\Users\imami\Programming\flow9\lib\net\url.flow 25 68
-505 C:\Users\imami\Programming\flow9\lib\net\url.flow 25 82
-510 C:\Users\imami\Programming\flow9\lib\net\url.flow 25 82
-523 C:\Users\imami\Programming\flow9\lib\ds\list.flow 35 1
-566 C:\Users\imami\Programming\flow9\lib\ds\list.flow 78 0
-584 C:\Users\imami\Programming\flow9\lib\ds\list.flow 79 1
-589 C:\Users\imami\Programming\flow9\lib\ds\list.flow 80 0
-595 C:\Users\imami\Programming\flow9\lib\ds\array.flow 36 1
-624 C:\Users\imami\Programming\flow9\lib\ds\array.flow 39 1
-655 C:\Users\imami\Programming\flow9\lib\ds\array.flow 7 1
-688 C:\Users\imami\Programming\flow9\lib\ds\array.flow 19 1
-715 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 47 0
-738 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 48 1
-747 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 48 1
-752 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 48 9
-757 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 48 12
-771 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 48 37
-776 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 48 59
-781 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 48 37
-792 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 50 16
-797 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 50 16
-808 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 51 2
-818 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 52 8
-829 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 48 1
-839 C:\Users\imami\Programming\flow9\lib\flowstructs.flow 53 0
-864 C:\Users\imami\Programming\flow9\lib\securitymode.flow 37 32
-885 C:\Users\imami\Programming\flow9\lib\securitymode.flow 21 41
-891 C:\Users\imami\Programming\flow9\lib\securitymode.flow 23 0
-914 C:\Users\imami\Programming\flow9\lib\securitymode.flow 24 1
-920 C:\Users\imami\Programming\flow9\lib\securitymode.flow 24 37
-930 C:\Users\imami\Programming\flow9\lib\securitymode.flow 24 1
-946 C:\Users\imami\Programming\flow9\lib\securitymode.flow 24 49
-953 C:\Users\imami\Programming\flow9\lib\securitymode.flow 25 0
-959 C:\Users\imami\Programming\flow9\lib\securitymode.flow 47 0
-984 C:\Users\imami\Programming\flow9\lib\securitymode.flow 48 1
-990 C:\Users\imami\Programming\flow9\lib\securitymode.flow 48 45
-995 C:\Users\imami\Programming\flow9\lib\securitymode.flow 48 49
-1008 C:\Users\imami\Programming\flow9\lib\securitymode.flow 48 1
-1026 C:\Users\imami\Programming\flow9\lib\securitymode.flow 49 0
-1032 C:\Users\imami\Programming\flow9\lib\securitymode.flow 43 0
-1058 C:\Users\imami\Programming\flow9\lib\securitymode.flow 44 1
-1060 C:\Users\imami\Programming\flow9\lib\securitymode.flow 44 1
-1062 C:\Users\imami\Programming\flow9\lib\securitymode.flow 44 2
-1075 C:\Users\imami\Programming\flow9\lib\securitymode.flow 44 21
-1087 C:\Users\imami\Programming\flow9\lib\securitymode.flow 44 43
-1093 C:\Users\imami\Programming\flow9\lib\securitymode.flow 45 0
-1099 C:\Users\imami\Programming\flow9\lib\runtime.flow 143 1
-1135 C:\Users\imami\Programming\flow9\lib\runtime.flow 79 1
-1188 C:\Users\imami\Programming\flow9\lib\runtime.flow 374 37
-1191 C:\Users\imami\Programming\flow9\lib\runtime.flow 144 1
-1208 C:\Users\imami\Programming\flow9\lib\runtime.flow 145 2
-1217 C:\Users\imami\Programming\flow9\lib\runtime.flow 145 6
-1228 C:\Users\imami\Programming\flow9\lib\runtime.flow 146 3
-1233 C:\Users\imami\Programming\flow9\lib\runtime.flow 146 3
-1248 C:\Users\imami\Programming\flow9\lib\runtime.flow 145 2
-1249 C:\Users\imami\Programming\flow9\lib\runtime.flow 146 0
-1255 C:\Users\imami\Programming\flow9\lib\string.flow 630 0
-1263 C:\Users\imami\Programming\flow9\lib\string.flow 632 0
-1268 C:\Users\imami\Programming\flow9\lib\string.flow 632 9
-1277 C:\Users\imami\Programming\flow9\lib\string.flow 632 14
-1284 C:\Users\imami\Programming\flow9\lib\string.flow 633 0
-1308 C:\Users\imami\Programming\flow9\lib\string.flow 890 0
-1325 C:\Users\imami\Programming\flow9\lib\string.flow 891 1
-1334 C:\Users\imami\Programming\flow9\lib\string.flow 891 5
-1339 C:\Users\imami\Programming\flow9\lib\string.flow 891 12
-1350 C:\Users\imami\Programming\flow9\lib\string.flow 892 2
-1357 C:\Users\imami\Programming\flow9\lib\string.flow 893 10
-1362 C:\Users\imami\Programming\flow9\lib\string.flow 893 10
-1368 C:\Users\imami\Programming\flow9\lib\string.flow 893 25
-1379 C:\Users\imami\Programming\flow9\lib\string.flow 894 3
-1384 C:\Users\imami\Programming\flow9\lib\string.flow 894 7
-1395 C:\Users\imami\Programming\flow9\lib\string.flow 896 2
-1400 C:\Users\imami\Programming\flow9\lib\string.flow 896 25
-1406 C:\Users\imami\Programming\flow9\lib\string.flow 896 37
-1425 C:\Users\imami\Programming\flow9\lib\string.flow 897 7
-1430 C:\Users\imami\Programming\flow9\lib\string.flow 897 14
-1441 C:\Users\imami\Programming\flow9\lib\string.flow 897 22
-1446 C:\Users\imami\Programming\flow9\lib\string.flow 897 25
-1461 C:\Users\imami\Programming\flow9\lib\string.flow 897 40
-1466 C:\Users\imami\Programming\flow9\lib\string.flow 897 48
-1471 C:\Users\imami\Programming\flow9\lib\string.flow 897 53
-1496 C:\Users\imami\Programming\flow9\lib\string.flow 896 14
-1502 C:\Users\imami\Programming\flow9\lib\string.flow 896 2
-1512 C:\Users\imami\Programming\flow9\lib\string.flow 898 0
-1518 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 3 0
-1534 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 4 4
-1543 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 4 4
-1548 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 4 11
-1553 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 4 4
-1563 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 5 0
-1569 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 7 0
-1583 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 8 4
-1592 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 8 12
-1597 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 8 14
-1602 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 8 16
-1607 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 8 18
-1622 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 9 14
-1627 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 9 14
-1638 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 10 4
-1643 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 10 29
-1649 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 10 12
-1655 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 10 4
-1662 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 11 4
-1667 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 11 4
-1677 C:\Users\imami\Programming\flow9\flow9\projects\lab1.flow 12 0
-1702 --end-- 0 -1
+0 C:\Users\Igor\ProgProjects\flow9\lib\ds\tuples.flow 7 1
+39 C:\Users\Igor\ProgProjects\flow9\lib\ds\tuples.flow 3 1
+77 C:\Users\Igor\ProgProjects\flow9\lib\ds\tuples.flow 5 1
+141 C:\Users\Igor\ProgProjects\flow9\lib\ds\tuples.flow 4 1
+191 C:\Users\Igor\ProgProjects\flow9\lib\dynamic.flow 10 2
+217 C:\Users\Igor\ProgProjects\flow9\lib\maybe.flow 9 1
+234 C:\Users\Igor\ProgProjects\flow9\lib\maybe.flow 10 1
+261 C:\Users\Igor\ProgProjects\flow9\lib\ds\list.flow 11 2
+296 C:\Users\Igor\ProgProjects\flow9\lib\ds\list.flow 9 2
+318 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 5 2
+346 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 7 2
+379 C:\Users\Igor\ProgProjects\flow9\lib\dynamic.flow 5 1
+432 C:\Users\Igor\ProgProjects\flow9\lib\dynamic.flow 36 0
+446 C:\Users\Igor\ProgProjects\flow9\lib\dynamic.flow 37 1
+455 C:\Users\Igor\ProgProjects\flow9\lib\dynamic.flow 37 6
+460 C:\Users\Igor\ProgProjects\flow9\lib\dynamic.flow 38 0
+491 C:\Users\Igor\ProgProjects\flow9\lib\net\url.flow 25 68
+505 C:\Users\Igor\ProgProjects\flow9\lib\net\url.flow 25 82
+510 C:\Users\Igor\ProgProjects\flow9\lib\net\url.flow 25 82
+523 C:\Users\Igor\ProgProjects\flow9\lib\ds\list.flow 35 1
+566 C:\Users\Igor\ProgProjects\flow9\lib\ds\list.flow 78 0
+584 C:\Users\Igor\ProgProjects\flow9\lib\ds\list.flow 79 1
+589 C:\Users\Igor\ProgProjects\flow9\lib\ds\list.flow 80 0
+595 C:\Users\Igor\ProgProjects\flow9\lib\ds\array.flow 36 1
+624 C:\Users\Igor\ProgProjects\flow9\lib\ds\array.flow 39 1
+655 C:\Users\Igor\ProgProjects\flow9\lib\ds\array.flow 7 1
+688 C:\Users\Igor\ProgProjects\flow9\lib\ds\array.flow 19 1
+715 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 47 0
+738 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 48 1
+747 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 48 1
+752 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 48 9
+757 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 48 12
+771 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 48 37
+776 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 48 59
+781 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 48 37
+792 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 50 16
+797 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 50 16
+808 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 51 2
+818 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 52 8
+829 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 48 1
+839 C:\Users\Igor\ProgProjects\flow9\lib\flowstructs.flow 53 0
+864 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 37 32
+885 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 21 41
+891 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 23 0
+914 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 24 1
+920 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 24 37
+930 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 24 1
+946 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 24 49
+953 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 25 0
+959 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 47 0
+984 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 48 1
+990 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 48 45
+995 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 48 49
+1008 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 48 1
+1026 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 49 0
+1032 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 43 0
+1058 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 44 1
+1060 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 44 1
+1062 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 44 2
+1075 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 44 21
+1087 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 44 43
+1093 C:\Users\Igor\ProgProjects\flow9\lib\securitymode.flow 45 0
+1099 C:\Users\Igor\ProgProjects\flow9\lib\runtime.flow 143 1
+1135 C:\Users\Igor\ProgProjects\flow9\lib\runtime.flow 79 1
+1188 C:\Users\Igor\ProgProjects\flow9\lib\runtime.flow 374 37
+1191 C:\Users\Igor\ProgProjects\flow9\lib\runtime.flow 144 1
+1208 C:\Users\Igor\ProgProjects\flow9\lib\runtime.flow 145 2
+1217 C:\Users\Igor\ProgProjects\flow9\lib\runtime.flow 145 6
+1228 C:\Users\Igor\ProgProjects\flow9\lib\runtime.flow 146 3
+1233 C:\Users\Igor\ProgProjects\flow9\lib\runtime.flow 146 3
+1248 C:\Users\Igor\ProgProjects\flow9\lib\runtime.flow 145 2
+1249 C:\Users\Igor\ProgProjects\flow9\lib\runtime.flow 146 0
+1255 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 630 0
+1263 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 632 0
+1268 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 632 9
+1277 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 632 14
+1284 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 633 0
+1308 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 890 0
+1325 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 891 1
+1334 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 891 5
+1339 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 891 12
+1350 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 892 2
+1357 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 893 10
+1362 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 893 10
+1368 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 893 25
+1379 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 894 3
+1384 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 894 7
+1395 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 896 2
+1400 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 896 25
+1406 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 896 37
+1425 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 897 7
+1430 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 897 14
+1441 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 897 22
+1446 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 897 25
+1461 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 897 40
+1466 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 897 48
+1471 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 897 53
+1496 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 896 14
+1502 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 896 2
+1512 C:\Users\Igor\ProgProjects\flow9\lib\string.flow 898 0
+1518 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 3 0
+1543 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 4 4
+1552 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 4 4
+1557 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 4 11
+1562 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 4 4
+1572 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 5 0
+1578 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 7 0
+1592 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 8 4
+1601 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 8 11
+1606 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 8 13
+1611 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 8 15
+1616 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 8 17
+1631 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 9 14
+1636 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 9 14
+1647 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 10 4
+1652 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 10 29
+1658 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 10 12
+1664 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 10 4
+1671 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 11 4
+1676 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 11 4
+1686 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab1.flow 12 0
+1711 --end-- 0 -1
 
 L 446 1 0 i
 L 496 1 0 url
@@ -191,6 +191,6 @@ L 1416 1 0 idx
 L 1416 1 1 acc
 L 1416 1 2 e
 L 1416 2 0 sep
-L 1534 1 0 s
-L 1583 0 0 ints
-L 1583 0 1 strings
+L 1543 1 0 s
+L 1592 0 0 arr
+L 1592 0 1 strings

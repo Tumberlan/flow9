@@ -1,11 +1,11 @@
 import string;
 
-countSumm(source:[int])->int {
-    fold(source, 0, \accumulator,x -> accumulator + x);
+countSumm(arr:[int])->int {
+    fold(arr, 0, \sum,x -> sum + x);
 }
 
 main(){
-    array = [1, 2, 3, 4];
-    println(countSumm(array));
+    arr = [1, 2, 3, 4];
+    println(countSumm(arr));
     quit(0);
 }

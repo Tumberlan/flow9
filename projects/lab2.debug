@@ -30,11 +30,11 @@
 1028 println$init
 1045 println
 1087 println$init
-1092 aggregate$init
-1111 aggregate
-1135 aggregate$1
-1156 aggregate
-1172 aggregate$init
+1092 countSumm$init
+1111 countSumm
+1135 countSumm$1
+1156 countSumm
+1172 countSumm$init
 1177 main$init
 1191 main
 1264 main$init
@@ -107,18 +107,18 @@
 1092 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 3 0
 1111 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 4 4
 1120 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 4 4
-1125 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 4 17
-1130 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 4 20
-1144 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 4 38
-1149 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 4 52
+1125 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 4 14
+1130 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 4 17
+1144 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 4 27
+1149 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 4 33
 1161 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 4 4
 1171 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 5 0
 1177 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 7 0
 1191 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 8 4
-1200 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 8 12
-1205 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 8 15
-1210 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 8 18
-1215 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 8 21
+1200 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 8 11
+1205 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 8 14
+1210 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 8 17
+1215 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 8 20
 1230 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 9 4
 1235 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 9 12
 1241 C:\Users\Igor\ProgProjects\flow9\flow9\projects\lab2.flow 9 4
@@ -136,7 +136,7 @@ L 599 0 2 t
 L 599 1 0 acc
 L 599 1 1 el
 L 1045 1 0 str
-L 1111 1 0 source
-L 1135 1 0 accumulator
+L 1111 1 0 arr
+L 1135 1 0 sum
 L 1135 1 1 x
-L 1191 0 0 ints
+L 1191 0 0 arr

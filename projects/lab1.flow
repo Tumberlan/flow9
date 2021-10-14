@@ -5,8 +5,8 @@ makeStringArray (s:[int])->[string]{
 }
 
 main(){
-    ints = [1,2,3,4];
-    strings = makeStringArray(ints);
+    arr = [1,2,3,4];
+    strings = makeStringArray(arr);
     println(strGlue(strings, "; "));
     quit(0);
 }

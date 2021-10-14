@@ -26,15 +26,25 @@ takeFibStart(n:int)->[int]{
     }else if (n == 1){
         [0,1];
     }else{
-        fibNumberRef(n,[0,1])
+        array: ref [int] = ref[0,1]; 
+        fibNumberRef(n, array);
+    }
+}
+myWhile(n: int, i: int, arr: ref[int])->void{
+   if(i<n){
+        refArrayPush(arr, ^arr[i-2]+ ^arr[i-1]);
+        myWhile(n,i+1,arr);
+    }else if(i == n){
+        refArrayPush(arr, ^arr[i-2]+ ^arr[i-1]);
     }
 }
 
 fibNumberRef(n:int, arr: ref[int])->[int]{
-    if(n < 3){
-        arr
+    if(n < 2){
+        ^arr;
     }else{
-        refArrayPush(arr, ^arr[n-2], ^arr[n-1])
+        myWhile(n,2,arr);
+        ^arr;
     }
 
 }
