@@ -1,0 +1,46 @@
+import string;
+import lingo/peg;
+import lingo/pegcode/driver;
+
+lingoGrammarOp : ref Maybe<[PegOp]> = ref None();
+
+lingoGrammar() {
+	onlyOnce(lingoGrammarOp, \ -> {
+		compilePegGrammar("#include math4lab5.lingo");
+	});
+}
+
+ConstInt : (value : int);
+Mul : (left : Expr, right : Expr);
+Add : (left : Expr, right : Expr);
+Expr ::= ConstInt, Mul, Add;
+
+ToString(e : Expr) -> string {
+    switch (e) {
+        ConstInt(cInt) : {i2s(cInt)}
+        Mul(l, r) : {"(" + ToString(l) + " * " + ToString(r) + ")"}
+        Add(l, r) : {"(" + ToString(l) + " + " + ToString(r) + ")"}
+    }
+}
+
+ToIntValue(e: Expr) -> int {
+    switch (e) {
+        ConstInt(cInt) : {cInt}
+        Mul(l, r) : {ToIntValue(l) * ToIntValue(r)}
+        Add(l, r) : {ToIntValue(l) + ToIntValue(r)}
+    }
+}
+
+Parse(str : string) -> Expr {
+    parsic(lingoGrammar(), str, defaultPegActions);
+}
+
+main() {
+    result = Parse("1+2*3+4*5");
+    println(result);
+    println("Result string:");
+    println(ToString(result));
+    println("Result value:");
+    println(ToIntValue(result));
+    quit(0);
+}

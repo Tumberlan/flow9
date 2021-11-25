@@ -1,0 +1,142 @@
+
+import string;
+import lingo/peg;
+import lingo/pegcode/driver;
+
+lingoGrammarOp : ref Maybe<[PegOp]> = ref None();
+
+lingoGrammar() {
+	onlyOnce(lingoGrammarOp, \ -> {
+		compilePegGrammar("#include math4lab7.lingo");
+	});
+}
+
+Expr ::= ConstInt, Mul, Add, Sub, Div, Neg, Var;
+ConstInt : (value : int);
+Add : (left : Expr, right : Expr);
+Sub : (left : Expr, right : Expr);
+Mul : (left : Expr, right : Expr);
+Div : (left : Expr, right : Expr);
+Neg : (arg : Expr);
+Var : (name : string);
+
+RationalNumber(numerator : int, denominator : int);
+
+i2rat(num : int) -> RationalNumber {
+    RationalNumber(num, 1);
+}
+
+rat2s(rat : RationalNumber) -> string {
+    if (rat.denominator == 1) {
+        i2s(rat.numerator);
+    } else if (rat.denominator == 0) {
+        "inf";
+    } else {
+        i2s(rat.numerator) + "/" + i2s(rat.denominator);
+    }
+}
+
+simplify(rat : RationalNumber) -> RationalNumber {
+    g = gcd(rat.numerator, rat.denominator);
+    RationalNumber(rat.numerator / g, rat.denominator / g);
+}
+
+addRat(l : RationalNumber, r : RationalNumber) -> RationalNumber {
+    RationalNumber(l.numerator * r.denominator + r.numerator * l.denominator, l.denominator * r.denominator);
+}
+
+subRat(l : RationalNumber, r : RationalNumber) -> RationalNumber {
+    RationalNumber(l.numerator * r.denominator - r.numerator * l.denominator, l.denominator * r.denominator);
+}
+
+mulRat(l : RationalNumber, r : RationalNumber) -> RationalNumber {
+    RationalNumber(l.numerator * r.numerator, l.denominator * r.denominator);
+}
+
+divRat(l : RationalNumber, r : RationalNumber) -> RationalNumber {
+    RationalNumber(l.numerator * r.denominator, l.denominator * r.numerator);
+}
+
+negRat(rat : RationalNumber) {
+    RationalNumber(-rat.numerator, rat.denominator);
+}
+
+str(e : Expr) -> string {
+    switch (e) {
+        ConstInt(cInt) : {i2s(cInt)}
+        Mul(l, r) : {"(" + str(l) + " * " + str(r) + ")"}
+        Add(l, r) : {"(" + str(l) + " + " + str(r) + ")"}
+        Sub(l, r) : {"(" + str(l) + " - " + str(r) + ")"}
+        Div(l, r) : {"(" + str(l) + " / " + str(r) + ")"}
+        Neg(arg) : {"(-" + str(arg) + ")"}
+        Var(x) : {x}
+    }
+}
+
+Val(e: Expr, vars : Tree<string, int>) -> RationalNumber {
+    switch (e) {
+        ConstInt(cInt) : {i2rat(cInt)}
+        Mul(l, r) : {simplify(mulRat(Val(l, vars), Val(r, vars)))}
+        Add(l, r) : {simplify(addRat(Val(l, vars), Val(r, vars)))}
+        Sub(l, r) : {simplify(subRat(Val(l, vars), Val(r, vars)))}
+        Div(l, r) : {simplify(divRat(Val(l, vars), Val(r, vars)))}
+        Neg(arg) : {negRat(Val(arg, vars))}
+        Var(name) : {
+            x = switch(lookupTree(vars, name)) {
+                None() : {i2rat(0)}
+                Some(val) : {i2rat(val)}
+            };
+            x;
+        }
+    }
+}
+
+s2expr(str : string) -> Expr {
+    parsic(lingoGrammar(), str, defaultPegActions);
+}
+
+expr2s(e : Expr) -> string {
+    switch (e) {
+        ConstInt(cInt) : i2s(cInt);
+        Mul(l, r) : "(" + expr2s(l) + " * " + expr2s(r) + ")";
+        Add(l, r) : "(" + expr2s(l) + " + " + expr2s(r) + ")";
+        Sub(l, r) : "(" + expr2s(l) + " - " + expr2s(r) + ")";
+        Div(l, r) : "(" + expr2s(l) + " / " + expr2s(r) + ")";
+        Neg(arg) : "(-" + expr2s(arg) + ")";
+        Var(x) : x;
+    }
+}
+
+appendValues(e : Expr, var : string) -> Expr {
+    switch (e) {
+        ConstInt(cInt) : ConstInt(0);
+        Add(l, r) : Add(appendValues(l, var), appendValues(r, var));
+        Sub(l, r) : Sub(appendValues(l, var), appendValues(r, var));
+        Mul(l, r) : Add(Mul(appendValues(l, var), r), Mul(l, appendValues(r, var)));
+        Div(l, r) : Div(Sub(Mul(appendValues(l, var), r), Mul(l, appendValues(r, var))), Mul(r, r));
+        Neg(arg) : Neg(appendValues(arg, var));
+        Var(name) : {
+            if (name == var) {
+                ConstInt(1);
+            }
+            else {
+                ConstInt(0);
+            }
+        }
+    }
+}
+
+main() {
+
+    a = s2i(getUrlParameter("param1"));
+    println(a);
+    vars = [Pair("x", a)];
+    varsTree = setTreeValues(TreeEmpty(), vars);
+
+    result = s2expr("(((x * 2) + 3) / (4 - 2))");
+    appendValues(result, "x");
+    println(str(result));
+    println(rat2s(Val(result, varsTree)));
+
+    quit(0);
+}

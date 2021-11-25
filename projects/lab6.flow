@@ -1,0 +1,65 @@
+
+import string;
+import lingo/peg;
+import lingo/pegcode/driver;
+
+lingoGrammarOp : ref Maybe<[PegOp]> = ref None();
+
+lingoGrammar() {
+	onlyOnce(lingoGrammarOp, \ -> {
+		compilePegGrammar("#include math4lab6.lingo");
+	});
+}
+
+ConstInt : (value : int);
+Mul : (left : Expr, right : Expr);
+Add : (left : Expr, right : Expr);
+Expr ::= ConstInt, Mul, Add;
+
+ToString(e : Expr) -> string {
+    switch (e) {
+        ConstInt(cInt) : {i2s(cInt)}
+        Mul(l, r) : {"(" + ToString(l) + " * " + ToString(r) + ")"}
+        Add(l, r) : {"(" + ToString(l) + " + " + ToString(r) + ")"}
+    }
+}
+
+ToIntValue(e: Expr) -> int {
+    switch (e) {
+        ConstInt(cInt) : {cInt}
+        Mul(l, r) : {ToIntValue(l) * ToIntValue(r)}
+        Add(l, r) : {ToIntValue(l) + ToIntValue(r)}
+    }
+}
+
+Parse(str : string) -> Expr {
+    parsic(lingoGrammar(), str, defaultPegActions);
+}
+
+
+ExprToString(e : Expr) -> string {
+    switch (e) {
+        ConstInt(cInt) : {i2s(cInt)}
+        Mul(l, r) : {ExprToString(l) + " " + ExprToString(r) + " *"}
+        Add(l, r) : {ExprToString(l) + " " + ExprToString(r) + " +"}
+    }
+}
+
+pop(stack : ref [?]) -> ? {
+    topPos = length(^stack) - 1;
+    element = ^stack[topPos];
+    stack := subrange(^stack, 0, topPos);
+    element;
+}
+
+main() {
+    result = Parse("+ + * 1 2 3 * 4 5");
+    println(result);
+    println("Result string:");
+    println(ToString(result));
+    println("Result value:");
+    println(ToIntValue(result));
+    println("Decode back value:");
+    println(ExprToString(result));
+    quit(0);
+}

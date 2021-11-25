@@ -1,19 +1,18 @@
 import string;
 import ds/tree;
 
-simpleIndexing(arr: [int], i: int, m: int){
-	if(i > length(arr)){
-		[]
-	}else if (arr[i] == m) {
-		concat([i], findIndexes(a, i+1, m));
+simpleIndexing(arr: [int], i: int, j: int, m: int){
+	if(j >= length(arr)){
+		if(i >= length(arr) - 1){
+		} else {
+		simpleIndexing(arr, i + 1, 0, m);
+		}
+	} else if (arr[i] + arr[j] == m) {
+		println(Pair(i,j));
+		simpleIndexing(arr, i, j + 1, m);
+	} else {
+		simpleIndexing(arr, i, j + 1, m);
 	}
-	else {
-		simpleIndexing(arr, i + 1, m);
-	}
-}
-
-myMap(arr: [int], m: int){
-	map(arr, \index -> simpleIndexing(arr, index, m-index));
 }
 
 indexes(arr: [int], m : int){
@@ -24,8 +23,8 @@ indexes(arr: [int], m : int){
 }
 
 main(){
-	arr = [1,5,3,3,2,4];
-	println(indexes(arr,6));
-	println(myMap(arr,6));
+	arr = [2,4,3,3,1,5];
+	println(indexes(arr,3));
+	simpleIndexing(arr,0,0,3);
 	quit(0);
 }
