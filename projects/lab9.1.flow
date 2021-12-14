@@ -1,0 +1,111 @@
+
+
+import runtime;
+import lingo/pegcode/driver;
+import string;
+import net/url_parameter;
+import math/math;
+
+Exp ::= Add, Sub, Mult, Div, Deg, Double;
+    Add : (e1 : Exp, e2 : Exp); 
+    Sub : (e1 : Exp, e2 : Exp); 
+    Mult : (e1 : Exp, e2 : Exp);
+    Div : (e1 : Exp, e2 : Exp);
+    Deg : (e1 : Exp, e2 : Exp);
+	Double : (d : double);
+
+
+str2exp(s : string) -> Exp {
+    gram = "#include math4lab9.lingo";
+    parsic(compilePegGrammar(gram), s, defaultPegActions);
+}
+
+
+ArRPN ::= OpRPN, ArgRPN;
+OpRPN ::= AddRPN, SubRPN, MultRPN, DivRPN, DegRPN;
+ArgRPN(d : double);
+AddRPN(); 
+SubRPN();
+MultRPN();
+DivRPN();
+DegRPN();
+
+exp2rpn(e : Exp) -> [ArRPN] {
+    switch (e) {
+        Add(e1, e2): concat(concat(exp2rpn(e1), exp2rpn(e2)), [AddRPN()]);
+        Sub(e1, e2): concat(concat(exp2rpn(e1), exp2rpn(e2)), [SubRPN()]);
+        Mult(e1, e2): concat(concat(exp2rpn(e1), exp2rpn(e2)), [MultRPN()]);
+        Div(e1, e2): concat(concat(exp2rpn(e1), exp2rpn(e2)), [DivRPN()]);
+        Deg(e1, e2): concat(concat(exp2rpn(e1), exp2rpn(e2)), [DegRPN()]);
+        Double(d): [ArgRPN(d)];
+    }
+}
+
+rpn2d(a : [ArRPN]) -> Maybe<double> {
+	apply_op = \op, stack -> {
+		switch(stack) {
+			Cons(v1, t1): {
+				switch(t1) {
+					Cons(v2, t2): {
+						switch (op) {
+							AddRPN(): Some(Cons(v1 + v2, t2));
+							SubRPN(): Some(Cons(v2 - v1, t2));
+							MultRPN(): Some(Cons(v1 * v2, t2));
+							DivRPN(): Some(Cons(v2 / v1, t2));
+							DegRPN(): Some(Cons(dpow(v2,v1), t2));
+						}
+					}
+					EmptyList(): None();
+				}
+			}
+			EmptyList(): None();
+		}
+	}
+
+	stack = fold(a, Some(makeList()), \ac, r -> {
+		maybeBind(ac, \acc -> {
+			switch(r) {
+				ArgRPN(v): Some(Cons(v, acc));
+				OpRPN(): apply_op(r, acc);
+			}
+		})
+	});
+	
+	maybeBind(stack, \s ->
+		switch (s) {
+			Cons(v, t): if (t == EmptyList()) Some(v) 
+							else None();
+			EmptyList(): None();
+		}
+	)
+}
+
+rpn2str(a : [ArRPN]) -> string {
+	s = "";
+	l = foldi(a, s, \i, arr, n_i -> switch(n_i) {
+								AddRPN(): arr + "+ ";
+								SubRPN(): arr + "- ";
+								MultRPN(): arr + "* ";
+								DivRPN(): arr + "/ ";
+								DegRPN(): arr + "^ ";
+								ArgRPN(d): arr + d2s(d) + " ";
+    						});
+	l;
+}
+
+mbd2a(m: Maybe<double>) -> void {
+	switch (m) {
+		None(): println("None");
+		Some(v): println(v);
+    }
+}
+
+main() {
+    inputStr = getUrlParameter("inputStr");
+
+	a = exp2rpn(str2exp(inputStr));
+	println(rpn2str(a));
+    mbd2a(rpn2d(exp2rpn(str2exp(inputStr))));
+
+    quit(0);
+}

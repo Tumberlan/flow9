@@ -152,13 +152,22 @@ appendValues(e : Expr, var : string) -> Expr {
     }
 }
 
+parseInputStr(str: string)-> [int]{
+    //subStr = StrSplit(str, "_");
+    //println(subStr[0]);
+    //substr;
+    [];
+}
+
 main() {
-    a = s2i(getUrlParameter("param1"));
-    println(a);
-    vars = [Pair("x", a)];
+    
+    x = s2i(getUrlParameter("param1"));
+    //parseInputStr(x);
+    println(x);
+    vars = [Pair("x", 2)];
     varsTree = setTreeValues(TreeEmpty(), vars);
 
-    result = s2expr("(((x * 2) + (2 ^ 3)) / (4 - 2))");
+    result = s2expr("((((2 + 1) / (7 * 3)) * ((7 + (6 * 3)) / x)) / ((3 * (2 + 1)) / (x * x)))");
     appendValues(result, "x");
     println(str(result));
     println(rat2s(Val(result, varsTree)));

@@ -1,0 +1,16 @@
+S = ws (pow | sum | min | mul | div | neg | var | int);
+pow = "(" ws S:l "^" ws S:r ")" ws { Pow(:l, :r)};
+sum = "(" ws S:l "+" ws S:r ")" ws { Sum(:l, :r)};
+min = "(" ws S:l "-" ws S:r ")" ws { Min(:l, :r)};
+mul = "(" ws S:l "*" ws S:r ")" ws { Mul(:l, :r)};
+div = "(" ws S:l "/" ws S:r ")" ws { Div(:l, :r)};
+neg = "-" ws S:e { Neg(:e)};
+int = digit+ $s ws { Int(s2i($s)) };
+digit = '0'-'9';
+var = letter+ $s ws { Var($s) };
+letter = 'a'-'z';
+
+ws = ws_*;
+ws_ = ' ' | '\t' | '\n' | '\r';
+
+

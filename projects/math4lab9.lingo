@@ -1,0 +1,16 @@
+exp = add | sub | mult | div | deg | int | negInt | negDouble | ws;
+add = ws "(" ws exp:e1 ws "+" ws exp:e2 ws ")" ws {Add(:e1, :e2)};
+sub = ws "(" ws exp:e1 ws "-" ws exp:e2 ws ")" ws {Sub(:e1, :e2)};
+mult = ws "(" ws exp:e1 ws "*" ws exp:e2 ws ")" ws {Mult(:e1, :e2)};
+div = ws "(" ws exp:e1 ws "/" ws exp:e2 ws ")" ws {Div(:e1, :e2)};
+deg = ws "(" ws exp:e1 ws "^" ws exp:e2 ws ")" ws {Deg(:e1, :e2)};
+
+int = digit + $d{Double(s2d($d))};
+double = digitDouble + $d{Double(s2d($d))};
+
+negInt = ws ("-" digit)$d ws {Double(s2d($d))};
+negDouble = ws ("-" digitDouble)$d ws {Double(s2d($d))};
+
+digit = '0'-'9';
+digitDouble = digit+ "." + digit+;
+ws = (' ' | '\n')*;

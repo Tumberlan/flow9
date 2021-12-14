@@ -1,0 +1,218 @@
+
+import lingo/pegcode/driver;
+import math/math;
+ 
+Exp ::= Sum, Mul, Min, Div, Neg, Var, Int, Pow;
+    Sum(lhs : Exp, rhs : Exp);
+    Min(lhs : Exp, rhs : Exp);
+    Mul(lhs : Exp, rhs : Exp);
+    Div(lhs : Exp, rhs : Exp);
+    Neg(e : Exp);
+    Var(name : string);
+    Int(val : int);
+	Pow(lhs : Exp, rhs : Exp);
+
+
+    s2alg(str : string) -> Exp {
+    grammar = "#include math4lab91.lingo";
+    parsic(compilePegGrammar(grammar), str, defaultPegActions)
+}
+
+RationNum(num : int, den : int);
+ 
+ratOne = RationNum(1, 1);
+ratZero = RationNum(0, 1);
+ 
+ratSum(x : RationNum, y : RationNum) -> RationNum {
+	a = x.num * y.den + y.num * x.den;
+	b = x.den * y.den;
+	z = gcd(a, b);
+	RationNum(a / z,  b / z)
+}
+ 
+ratMin(x : RationNum, y : RationNum) -> RationNum {
+	a = x.num * y.den - y.num * x.den;
+	b = x.den * y.den;
+	z = gcd(a, b);
+	RationNum(a / z,  b /z)
+}
+ 
+ratMul(x : RationNum, y : RationNum) -> RationNum {
+	a = x.num * y.num;
+	b = x.den * y.den;
+	z = gcd(a, b);
+	RationNum(a / z,  b /z)
+}
+ 
+ratDiv(x : RationNum, y : RationNum) -> RationNum {
+	a = x.num * y.den;
+	b = x.den * y.num;
+	z = gcd(a, b);
+	RationNum(a / z,  b /z)
+}
+ 
+ratNeg(x : RationNum) -> RationNum {
+	RationNum(- x.num,  x.den)
+}
+ 
+ratPow(x : RationNum, y : RationNum) -> RationNum {
+    if (y.num == 0) {
+        ratOne;
+    }
+	else if (x.num == 0) {
+		ratZero;
+	} 
+	else {
+        right : int = y.num / y.den;
+		RationNum(pow(x.num, right), pow(x.den, right));
+    }
+}
+ 
+rat2s(x : RationNum) -> string {
+	if (x.den == 1 ) i2s(x.num) else 
+	if (x.den == 0 ) "nan" else
+	i2s(x.num) + " / " + i2s(x.den)  
+}
+ 
+alg2s(ex : Exp) -> string {
+    switch (ex) {
+        Sum(lhs, rhs): "(" + alg2s(lhs) + " + " + alg2s(rhs) + ")";
+        Min(lhs, rhs): "(" + alg2s(lhs) + " - " + alg2s(rhs) + ")";
+        Mul(lhs, rhs): "(" + alg2s(lhs) + " * " + alg2s(rhs) + ")";
+        Div(lhs, rhs): "(" + alg2s(lhs) + " / " + alg2s(rhs) + ")";
+        Neg(e): "-" + alg2s(e);
+        Var(name): name;
+        Int(val): i2s(val);
+		Pow(lhs, rhs): "(" + alg2s(lhs) + " ^ " + alg2s(rhs) + ")";
+    }
+}
+ 
+alg2Rat(ex : Exp, variables : Tree<string, RationNum>) -> RationNum {
+    switch (ex) {
+        Sum(lhs, rhs): ratSum(alg2Rat(lhs, variables), alg2Rat(rhs, variables));
+        Mul(lhs, rhs): ratMul(alg2Rat(lhs, variables), alg2Rat(rhs, variables));
+        Min(lhs, rhs): ratMin(alg2Rat(lhs, variables), alg2Rat(rhs, variables));
+        Div(lhs, rhs): ratDiv(alg2Rat(lhs, variables), alg2Rat(rhs, variables));
+        Neg(e): ratNeg(alg2Rat(e, variables));
+        Var(name): {
+            switch(lookupTree(variables, name)) {
+                None(): ratZero;
+                Some(val): val;
+            }
+        }
+        Int(val): RationNum(val, 1);
+		Pow(lhs, rhs): ratPow(alg2Rat(lhs, variables), alg2Rat(rhs, variables));
+    }
+}
+   
+ 
+ArRPN ::= OpRPN, ArgRPN, VarRPN;
+    OpRPN ::= SumRPN, MultRPN, MinRPN, DivRPN, NegRPN, PowRPN;
+    ArgRPN(val : RationNum);
+    VarRPN(name : string);
+    SumRPN(); MultRPN(); MinRPN(); DivRPN(); NegRPN(); PowRPN();
+ 
+rpn2s(e : [ArRPN]) -> string {
+    fold(e, "", \acc, r -> {
+            switch(r) {
+                ArgRPN(v): acc + rat2s(v) + " ";
+                SumRPN():  acc + "+ "; 
+                MultRPN(): acc + "* "
+                MinRPN(): acc + "- ";
+                DivRPN(): acc + "/ ";
+                NegRPN(): acc + "- ";
+                PowRPN(): acc + "^ ";
+                VarRPN(var): acc + var + " ";
+            }
+        }
+    )
+}
+ 
+rpn2i(e : [ArRPN], variables: Tree<string, RationNum>) -> Maybe<RationNum> {
+    apply_op = \op, stack -> {
+        switch(stack) {
+            Cons(v1, t1): {
+                switch(op) {
+                    NegRPN(): Some(Cons(ratNeg(v1), t1));
+                    default: {
+                        switch(t1) {
+                            Cons(v2, t2): {
+                                switch (op) {
+                                    SumRPN(): Some(Cons(ratSum(v1, v2), t2));
+                                    MultRPN(): Some(Cons(ratMul(v1, v2), t2));
+                                    MinRPN(): Some(Cons(ratMin(v1, v2), t2));
+                                    DivRPN(): Some(Cons(ratDiv(v2, v1), t2));
+                                    PowRPN(): Some(Cons(ratPow(v2, v1), t2));
+                                    NegRPN(): None();
+                                }
+                            }
+                            EmptyList(): None();
+                        }
+                    }
+                }
+            }
+            EmptyList(): None();
+        }
+    }
+    stack = fold(e, Some(makeList()), \acc, r -> {
+            maybeBind(acc, \ac -> {
+                    switch(r) {
+                        ArgRPN(v): Some(Cons(v, ac));
+                        OpRPN(): apply_op(r, ac);
+                        VarRPN(name): {
+                            switch(lookupTree(variables, name)) {
+                                None(): Some(Cons(ratZero, ac));
+                                Some(val): Some(Cons(val, ac));
+                            }
+                        }
+                    }
+                }
+            )
+        }
+    );
+    maybeBind(stack, \s ->
+        switch (s) {
+            Cons(v, t): if (t == EmptyList()) Some(v) else None();
+            EmptyList(): None();
+        }
+    )
+}
+
+
+alg2rpn(e : Exp) -> [ArRPN] {
+    switch (e) {
+        Sum(l, r): concat(concat(alg2rpn(l), alg2rpn(r)), [SumRPN()]);
+        Mul(l, r): concat(concat(alg2rpn(l), alg2rpn(r)), [MultRPN()]);
+        Min(l, r): concat(concat(alg2rpn(l), alg2rpn(r)), [MinRPN()]);
+        Div(l, r): concat(concat(alg2rpn(l), alg2rpn(r)), [DivRPN()]);
+        Neg(l): concat(alg2rpn(l), [NegRPN()]);
+        Pow(l, r): concat(concat(alg2rpn(l), alg2rpn(r)), [PowRPN()]);
+        Int(v): [ArgRPN(RationNum(v, 1))];
+        Var(var): [VarRPN(var)];
+    }
+}
+ 
+ Variables() -> Tree<string, RationNum> {
+	tree : Tree<string, RationNum> = makeTree();
+	tree1 = setTree(tree, "x", RationNum(1, 2));
+	setTree(tree1, "y", RationNum(5, 2));
+}
+
+
+main() {
+    
+    tree = s2alg("((x+y)^(12/3))");
+    println(tree);
+    
+    tree_rpn = alg2rpn(tree); 
+    println(tree_rpn); 
+
+    str_rpn = rpn2s(tree_rpn);
+    println(str_rpn);
+
+    tree_res = rpn2i(tree_rpn, Variables());
+    println(tree_res);
+    quit(0);
+}
+
+
